@@ -27,7 +27,11 @@ async function addLoan(req, res) {
   try {
     const newLoan = await loanModel.insertOne(...req.body);
     res.send(newLoan);
-  } catch (err) {}
+  } catch (err) {
+    res.send({
+      error: true
+    })
+  }
 }
 
 async function updateLoan(req, res) {

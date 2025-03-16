@@ -1,18 +1,12 @@
 const express = require("express");
 const { createReadStream } = require("fs");
-const loanController = require("./controllers/loan.controller");
-const sendEmail = require("./controllers/send-email");
+
 const userRouter = require("./routes/user.route");
-
-// user Model
-
-const userModel = require("./models/user.model");
-
-const connectToDb = require("./mogodb");
+const loanRouter = require("./routes/loan.route");
+const sportBetRouter = require("./routes/sportBet.route");
 
 const cors = require("cors");
-const loanRouter = require("./routes/loan.route");
-
+const connectToDb = require("./mogodb");
 const app = express();
 
 app.use(express.json());
@@ -24,8 +18,8 @@ app.use(
   })
 );
 
-app.use("/", userRouter);
-
+app.use("/users", userRouter);
+app.use("/sportbets", sportBetRouter);
 app.use("/loans", loanRouter);
 
 connectToDb().catch(console.dir);
@@ -56,5 +50,5 @@ app.get("/info", async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("istening on port 3000");
+  console.log("listening on port 3000");
 });

@@ -7,8 +7,8 @@ const {
 
 const userRouter = Router();
 
+userRouter.get("/", allUsers);
 userRouter.post("/register", registerUser);
 userRouter.post("/login", loginUser);
-userRouter.get("/api/users", allUsers);
 
 module.exports = userRouter;

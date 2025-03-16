@@ -6,5 +6,4 @@ const SportBetSchema = new mongoose.Schema({
 });
 
 const SportBetModel = mongoose.model("SportBet", SportBetSchema);
-
-module.exports = LoanModel;
+module.exports = SportBetModel;

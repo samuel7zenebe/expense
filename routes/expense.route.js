@@ -6,7 +6,7 @@ const {
   updateExpense,
   deleteExpense,
   deleteExpenses,
-} = require("../controllers/expense.controller");
+} = require("../controllers/Expense.controller");
 
 ExpenseRouter.get("/", allExpenses);
 ExpenseRouter.get("/:ExpenseId", retrieveExpense);

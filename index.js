@@ -1,13 +1,15 @@
 const express = require("express");
 const { createReadStream } = require("fs");
+const connectToDb = require("./mogodb");
 
 const userRouter = require("./routes/user.route");
 const loanRouter = require("./routes/loan.route");
 const sportBetRouter = require("./routes/sportBet.route");
+const expenseRouter = require("./routes/expense.route");
+const balanceRouter = require("./routes/balance.route");
 
-const cors = require("cors");
-const connectToDb = require("./mogodb");
 const app = express();
+const cors = require("cors");
 
 app.use(express.json());
 
@@ -21,8 +23,11 @@ app.use(
 app.use("/users", userRouter);
 app.use("/sportbets", sportBetRouter);
 app.use("/loans", loanRouter);
+app.use("/balances", balanceRouter);
+app.use("/expenses", expenseRouter);
 
 connectToDb().catch(console.dir);
+
 app.get("/", (req, res) => {
   res.send("<h1>Hello world</h1>");
 });
